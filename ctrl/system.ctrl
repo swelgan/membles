@@ -1,0 +1,18 @@
+# controller frequency, unit: MHz
+CTRL_FREQ=800
+
+# number of logical channels
+NUM_CHAN=1
+
+# data bus width, unit: bit
+DATA_BUS_BIT=64
+
+# transaction queue depth
+READ_TRANS_QUEUE=8
+WRITE_TRANS_QUEUE=8
+
+# command queue depth
+CMD_QUEUE=64
+
+# address mapping scheme
+ADDR_MAP=row,rank,bank,row,col
