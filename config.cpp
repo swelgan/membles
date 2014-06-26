@@ -26,6 +26,8 @@
 
 #include <fstream>
 #include <sstream>
+#include <vector>
+#include <string>
 
 #include "config.h"
 
@@ -126,18 +128,19 @@ bool CfgItem::set(const string &val_str)
             pos = temp.find(',');
         };
         val_strs.push_back(temp.substr(0, pos));
-        // check if more than 2 fiedls
+        // check if more than 2 fields
         if (val_strs.size() > 2) return false;
         // convert to Timing
         for (auto &str : val_strs) {
-            istringstream ss(str);
             if (str.find("ns") == string::npos) {
                 // this is a cycle value
+                istringstream ss(str);
                 uint32_t val = 0;
                 if ((ss >> dec >> val).fail()) return false;
                 ((Timing *)ptr_)->set_cycle(val);
             } else {
                 // this is a ns value
+                istringstream ss(str.substr(0, str.length() - 2));
                 double val = 0.0;
                 if ((ss >> dec >> val).fail()) return false;
                 ((Timing *)ptr_)->set_ns(val);

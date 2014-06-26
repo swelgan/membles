@@ -25,6 +25,7 @@
  */
 
 #include <sstream>
+#include <cmath>
 
 #include "address_map.h"
 #include "controller_config.h"
